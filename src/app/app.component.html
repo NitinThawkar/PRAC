@@ -9,13 +9,18 @@
     <h3>Pass data from parent component to child component</h3>
  
  
-<app-child [LoggedInUser]="loggedInUserParent" [LoggedIn]="loggedInUser" [LoggedInChild]="loggedInUser"></app-child>
+<app-child [LoggedInUser]="loggedInUserParent" [LoggedIn]="loggedInUser" [LoggedInChild]="loggedInUserParentNgOnchanges"></app-child>
 
 <br>
 <button (click)="loggedInUserParent=true">Pass data to child comp</button>
 <button (click)="loggedInUserParent=false">Pass data to child comp</button>  
 Note:welcome message change on clicking on button<br>
 <span>----------------------------------------------------------------------------------</span>
+<br>
+<button (click)="loggedInUserParentNgOnchanges=true">Pass data to child comp NgOnChanges</button>
+<button (click)="loggedInUserParentNgOnchanges=false">Pass data to child comp NgOnChanges</button>  
+Note:welcome message change on clicking on button<br>
+
 </fieldset>
 </div>
 <div style="text-align:center">

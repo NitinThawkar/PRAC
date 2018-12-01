@@ -81,7 +81,7 @@ export class AppComponent implements AfterViewInit {
   /********************Send Data To Child Component**************************/
   loggedInUser = true;
   loggedInUserParent: true;
-  
+  loggedInUserParentNgOnchanges: true;
   /********************Send Data To Child Component************************/
 
 

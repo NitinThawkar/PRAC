@@ -9,12 +9,12 @@ import { isNullOrUndefined } from 'util';
 export class ChildComponent implements OnChanges {
   constructor() { }
   ngOnChanges(changes: SimpleChanges) {
-    const MyLoginvalue = changes["LoggedInUser"];
+    const MyLoginvalue = changes["LoggedInChild"];
     console.log(changes);
-   // console.log(MyLoginValue);
+    // console.log(MyLoginValue);
     if (MyLoginvalue.currentValue === true) {
-      this.message = 'Welcome back nitin from NgOnchanges';
-    } else { this.message = 'Please Login NgOnchanges'; }
+      this.OnChangesmessage = 'Welcome back nitin from NgOnchanges';
+    } else { this.OnChangesmessage = 'Please Login NgOnchanges'; }
 
   }
 
@@ -22,9 +22,10 @@ export class ChildComponent implements OnChanges {
   // LoggedIn = false;
   @Input() LoggedInChild: boolean;
 
-    /********************Intercept the data from parent component to child component**************************/
+  /********************Intercept the data from parent component to child component**************************/
   private _LoggedInUser;
   message: string;
+  OnChangesmessage: string;
   get LoggedInUser(): boolean {
     return this._LoggedInUser;
   }
@@ -36,7 +37,7 @@ export class ChildComponent implements OnChanges {
     if (value === true) {
       this.message = 'Welcome back nitin';
     } else { this.message = 'Please Login'; }
-  }  
+  }
   /*********************************************/
 
 }

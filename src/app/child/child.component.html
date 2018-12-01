@@ -1,16 +1,17 @@
+<p *ngIf="LoggedIn">
+  welcome Back!
+</p>
+<p *ngIf="!LoggedIn">
+  Please Login
+</p>
+<span>----------------------------------------------------------------------------------</span>
+<h3>Intercept the data from parent component to child component</h3>
+Pass data from parent component to child component through @Input() property GETv SET
+<br>
+Message : <h4 style="color: red">{{message}}</h4>
+<span>----------------------------------------------------------------------------------</span>
+<h3>Intercept the data from parent component to child component NgOnchanges only work with child component</h3>
+Pass data from parent component to child component through @Input() property
+Message : <h4 style="color: red">{{OnChangesmessage}}</h4>
 
-  <p *ngIf="LoggedIn">
-    welcome Back!
-  </p>
-  <p *ngIf="!LoggedIn">
-    Please Login
-  </p>
-  <span>----------------------------------------------------------------------------------</span>
-  <h3>Intercept the data from parent component to child component</h3>
-  Pass data from parent component to child component through @Input() property GETv SET
-  <br>
-  Message : <h4 style="color: red">{{message}}</h4>  
-  <span>----------------------------------------------------------------------------------</span>
-  <h3>Intercept the data from parent component to child component NgOnchanges</h3>
-  Pass data from parent component to child component through @Input() property
-  <br>
+<br>
