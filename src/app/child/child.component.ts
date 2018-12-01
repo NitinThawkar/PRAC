@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { isNullOrUndefined } from 'util';
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-child',
@@ -16,6 +17,13 @@ export class ChildComponent implements OnChanges {
       this.OnChangesmessage = 'Welcome back nitin from NgOnchanges';
     } else { this.OnChangesmessage = 'Please Login NgOnchanges'; }
 
+  }
+
+  childTemplateVAriable = "childTemplateVAriable";
+
+  childHiMsg()
+  {
+    alert('Hi Nitin');
   }
 
   @Input() LoggedIn: boolean;

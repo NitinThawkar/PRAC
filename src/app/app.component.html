@@ -9,7 +9,7 @@
     <h3>Pass data from parent component to child component</h3>
  
  
-<app-child [LoggedInUser]="loggedInUserParent" [LoggedIn]="loggedInUser" [LoggedInChild]="loggedInUserParentNgOnchanges"></app-child>
+<app-child #ChildRefVarible [LoggedInUser]="loggedInUserParent" [LoggedIn]="loggedInUser" [LoggedInChild]="loggedInUserParentNgOnchanges"></app-child>
 
 <br>
 <button (click)="loggedInUserParent=true">Pass data to child comp</button>
@@ -20,7 +20,16 @@ Note:welcome message change on clicking on button<br>
 <button (click)="loggedInUserParentNgOnchanges=true">Pass data to child comp NgOnChanges</button>
 <button (click)="loggedInUserParentNgOnchanges=false">Pass data to child comp NgOnChanges</button>  
 Note:welcome message change on clicking on button<br>
-
+<span>----------------------------------------------------------------------------------</span>
+<br>
+<h3>Accessing Child  component Variable/properties and method  using  template referance  Variable</h3>
+{{ChildRefVarible.childTemplateVAriable}}
+<button (click)="ChildRefVarible.childHiMsg()">Access Child Variable And Method</button>
+<br>
+<span>----------------------------------------------------------------------------------</span>
+<br>
+<h3>Accessing Child component Variable/properties and method in parent Cpmponet Class using @ViewChild Decorator</h3>
+<app-child-second></app-child-second>
 </fieldset>
 </div>
 <div style="text-align:center">
@@ -133,7 +142,7 @@ You entered : {{Username}}
   </p>
 
   <span>----------------------------------------------------------------------------------</span>
-  <h3>Access Dom element In the Template from the componant class</h3>
+  <h3>Access Dom element In the Template from the componant class # Access referance Variable in class @ViewChild</h3>
   <input #nameRef value="Type Nitin" type='text' [(ngModel)]="Custname">
   <p>
     Welcome {{Custname}}

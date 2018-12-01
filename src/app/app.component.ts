@@ -1,6 +1,7 @@
 // Parent Component
 
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { ChildSecondComponent } from './child-second/child-second.component';
 
 @Component({
   selector: 'app-root',
@@ -71,18 +72,27 @@ export class AppComponent implements AfterViewInit {
 
   /****************Access Dom element In the Template from the componant class**
    * 
-   * Set the focus on input element***@viewChield*************************/
+   * Set the focus on input element***@viewChield Access referance Variable in class*************************/
   @ViewChild('nameRef') nameElementRef: ElementRef;
   ngAfterViewInit() {
     this.nameElementRef.nativeElement.focus();
     console.log(this.nameElementRef);
+    this.ChildSecondComponentRefVarable.MessageSecondChild="Message From parent Component";
   }
 
   /********************Send Data To Child Component**************************/
   loggedInUser = true;
   loggedInUserParent: true;
   loggedInUserParentNgOnchanges: true;
-  /********************Send Data To Child Component************************/
+  
+  /**************
+   * Accessing Child component Variable/properties and method in parent Cpmponet Class using @ViewChild Decorator
+   * 
+   * *************/
+  
+//@view chield pass "ChildComponent" as argument and impliment AfterViewInit
+@ViewChild(ChildSecondComponent)
+ ChildSecondComponentRefVarable: ChildSecondComponent;
 
 
 }
