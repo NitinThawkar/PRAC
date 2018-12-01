@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { isNullOrUndefined } from 'util';
 
 @Component({
@@ -6,14 +6,21 @@ import { isNullOrUndefined } from 'util';
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.css']
 })
-export class ChildComponent implements OnInit {
+export class ChildComponent implements OnChanges {
   constructor() { }
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    const MyLoginvalue = changes["LoggedInUser"];
+    console.log(changes);
+   // console.log(MyLoginValue);
+    if (MyLoginvalue.currentValue === true) {
+      this.message = 'Welcome back nitin from NgOnchanges';
+    } else { this.message = 'Please Login NgOnchanges'; }
+
   }
 
   @Input() LoggedIn: boolean;
   // LoggedIn = false;
-
+  @Input() LoggedInChild: boolean;
 
     /********************Intercept the data from parent component to child component**************************/
   private _LoggedInUser;

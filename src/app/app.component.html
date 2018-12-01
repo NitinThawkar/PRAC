@@ -9,7 +9,7 @@
     <h3>Pass data from parent component to child component</h3>
  
  
-<app-child [LoggedInUser]="loggedInUserParent" [LoggedIn]="loggedInUser"></app-child>
+<app-child [LoggedInUser]="loggedInUserParent" [LoggedIn]="loggedInUser" [LoggedInChild]="loggedInUser"></app-child>
 
 <br>
 <button (click)="loggedInUserParent=true">Pass data to child comp</button>
