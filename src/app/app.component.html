@@ -1,160 +1,172 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!--Parent Component.-->
 <div>
-<h1>Parent</h1>
-<fieldset>
+  <h1>Parent</h1>
+  <fieldset>
     <legend>
       <h2>Child Component</h2>
     </legend>
     <h3>Pass data from parent component to child component</h3>
- 
- 
-<app-child #ChildRefVarible [LoggedInUser]="loggedInUserParent" [LoggedIn]="loggedInUser" [LoggedInChild]="loggedInUserParentNgOnchanges"></app-child>
 
-<br>
-<button (click)="loggedInUserParent=true">Pass data to child comp</button>
-<button (click)="loggedInUserParent=false">Pass data to child comp</button>  
-Note:welcome message change on clicking on button<br>
-<span>----------------------------------------------------------------------------------</span>
-<br>
-<button (click)="loggedInUserParentNgOnchanges=true">Pass data to child comp NgOnChanges</button>
-<button (click)="loggedInUserParentNgOnchanges=false">Pass data to child comp NgOnChanges</button>  
-Note:welcome message change on clicking on button<br>
-<span>----------------------------------------------------------------------------------</span>
-<br>
-<h3>Accessing Child  component Variable/properties and method  using  template referance  Variable</h3>
-{{ChildRefVarible.childTemplateVAriable}}
-<button (click)="ChildRefVarible.childHiMsg()">Access Child Variable And Method</button>
-<br>
-<span>----------------------------------------------------------------------------------</span>
-<br>
-<h3>Accessing Child component Variable/properties and method in parent Cpmponet Class using @ViewChild Decorator</h3>
-<app-child-second></app-child-second>
-</fieldset>
+
+    <app-child #ChildRefVarible [LoggedInUser]="loggedInUserParent" [LoggedIn]="loggedInUser" [LoggedInChild]="loggedInUserParentNgOnchanges"></app-child>
+
+    <br>
+    <button (click)="loggedInUserParent=true">Pass data to child comp</button>
+    <button (click)="loggedInUserParent=false">Pass data to child comp</button>
+    Note:welcome message change on clicking on button<br>
+    <span>----------------------------------------------------------------------------------</span>
+    <br>
+    <button (click)="loggedInUserParentNgOnchanges=true">Pass data to child comp NgOnChanges</button>
+    <button (click)="loggedInUserParentNgOnchanges=false">Pass data to child comp NgOnChanges</button>
+    Note:welcome message change on clicking on button<br>
+    <span>----------------------------------------------------------------------------------</span>
+    <br>
+    <h3>Accessing Child component Variable/properties and method using template referance Variable</h3>
+    {{ChildRefVarible.childTemplateVAriable}}
+    <button (click)="ChildRefVarible.childHiMsg()">Access Child Variable And Method</button>
+    <br>
+    <span>----------------------------------------------------------------------------------</span>
+    <br>
+    <h3>Accessing Child component Variable/properties and method in parent Cpmponet Class using @ViewChild Decorator</h3>
+    <app-child-second></app-child-second>
+    <br>
+    <span>----------------------------------------------------------------------------------</span>
+    <br>
+    <h3>child componet communicate back to parent component. child component calling method /Access Variable of Parent
+      Component </h3>
+      <!-- (greetEvent)="GreetMaster()" -->
+
+    <app-child-three (greetEvent)="GreetMaster()" (greetEventName)="GreetMasterName($event)"></app-child-three>
+  </fieldset>
 </div>
 <div style="text-align:center">
-    <fieldset  #nameRef>
-        <legend><h1>Component To template intraction:</h1></legend>
-    
-
-  <h2>
-    Welcome to {{ myNameProperty }}!
-  </h2>
-  <h2>
-    Welcome to {{ Apptitle }}!
-  </h2>
-  <h2>
-    Welcome to {{ Apptitle2 }}!
-  </h2>
-
-  <hr>
-  <img src={{imageurl}} alt="Intrpolation Binding">
-  <span>gap</span>
-  <img [src]='imageurl' alt="Attribute binding">
-  <span>gap</span>
-  <img src="http://www.111ideas.com/wp-content/uploads/2017/08/{{Image}}" alt="Attribute binding">
-
-  <hr>
-  <button (click)="incrementCount()">Click Me</button>
-  click count {{count}}
-  <span>- </span>
-  <button [disabled]="true">disabled</button>
-  <span>- </span>
-  <button [disabled]="isdisabled">Enable</button>
-  <span>- </span>
-  <button (click)="toggleButton()" [disabled]="isdisabled">{{isdisabled ? 'Hide' : 'Show'}} </button>
-  <hr>
-
-  <input id='inputId' type='text' value='Tom'>
- <p> inputId.getAttribute('value')
-   # 
-  inputId.value #change value and again see it in console</p>
-  <hr>
-  <h3>EventToggel</h3>
-  <table border="1" style="border: 1px solid red;">
-    <thead>
-      <tr>
-        <th attr.colspan="{{columnSpan}}">
-          Employee Details
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>First Name</td>
-        <td>{{firstName}}</td>
-      </tr>
-      <tr>
-        <td>Last Name</td>
-        <td>{{lastName}}</td>
-      </tr>
-      <tr *ngIf='showDetails'>
-        <td>Gender</td>
-        <td>{{gender}}</td>
-      </tr>
-      <tr *ngIf='showDetails'>
-        <td>Age</td>
-        <td>{{age}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <br />
-  <button (click)='toggleDetails()'>
-    {{showDetails ? 'Hide' : 'Show'}} Details
-  </button>
-  <hr>
-  <h2>Two way binding </h2>
-  <p>
-    Two way binding : import FormsModule in App.module @angular/forms.ngForm
-    Name property NOt requird if input field not in Forms Tag (else its mandatory)
-  </p>
-  <input value="Two way binding" type='text' [(ngModel)]="Twowaybinding">
-  <p>
-    Welcome {{Twowaybinding}}
-  </p>
-  <span>----------------------------------------------------------------------------------</span>
-  <h3>Split Two way Binding # run Additional code with Two way Binding</h3>
+  <fieldset #nameRef>
+    <legend>
+      <h1>Component To template intraction:</h1>
+    </legend>
 
 
-  <p>
-    Split Two way Binding {{Username}} # 
-    <input value="Two way binding" type='text' [ngModel]="Username" (ngModelChange)="Username=$event">
-     
-  </p>
+    <h2>
+      Welcome to {{ myNameProperty }}!
+    </h2>
+    <h2>
+      Welcome to {{ Apptitle }}!
+    </h2>
+    <h2>
+      Welcome to {{ Apptitle2 }}!
+    </h2>
+
+    <hr>
+    <img src={{imageurl}} alt="Intrpolation Binding">
+    <span>gap</span>
+    <img [src]='imageurl' alt="Attribute binding">
+    <span>gap</span>
+    <img src="http://www.111ideas.com/wp-content/uploads/2017/08/{{Image}}" alt="Attribute binding">
+
+    <hr>
+    <button (click)="incrementCount()">Click Me</button>
+    click count {{count}}
+    <span>- </span>
+    <button [disabled]="true">disabled</button>
+    <span>- </span>
+    <button [disabled]="isdisabled">Enable</button>
+    <span>- </span>
+    <button (click)="toggleButton()" [disabled]="isdisabled">{{isdisabled ? 'Hide' : 'Show'}} </button>
+    <hr>
+
+    <input id='inputId' type='text' value='Tom'>
+    <p> inputId.getAttribute('value')
+      #
+      inputId.value #change value and again see it in console</p>
+    <hr>
+    <h3>EventToggel</h3>
+    <table border="1" style="border: 1px solid red;">
+      <thead>
+        <tr>
+          <th attr.colspan="{{columnSpan}}">
+            Employee Details
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>First Name</td>
+          <td>{{firstName}}</td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>{{lastName}}</td>
+        </tr>
+        <tr *ngIf='showDetails'>
+          <td>Gender</td>
+          <td>{{gender}}</td>
+        </tr>
+        <tr *ngIf='showDetails'>
+          <td>Age</td>
+          <td>{{age}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <button (click)='toggleDetails()'>
+      {{showDetails ? 'Hide' : 'Show'}} Details
+    </button>
+    <hr>
+    <h2>Two way binding </h2>
+    <p>
+      Two way binding : import FormsModule in App.module @angular/forms.ngForm
+      Name property NOt requird if input field not in Forms Tag (else its mandatory)
+    </p>
+    <input value="Two way binding" type='text' [(ngModel)]="Twowaybinding">
+    <p>
+      Welcome {{Twowaybinding}}
+    </p>
+    <span>----------------------------------------------------------------------------------</span>
+    <h3>Split Two way Binding # run Additional code with Two way Binding</h3>
 
 
-  <p>
-    Split Two way Binding with Additonal Code {{UsernameL}} #
-    <input value="Two way binding" type='text' [ngModel]="UsernameL"  (ngModelChange)="GreetNitin($event)">
-    
-  </p>
-  <p>
-    Name : <input [value]='Username' (input)='Username = $event.target.value'>
-<br>
-You entered : {{Username}}
-  </p>
+    <p>
+      Split Two way Binding {{Username}} #
+      <input value="Two way binding" type='text' [ngModel]="Username" (ngModelChange)="Username=$event">
 
-  <span>----------------------------------------------------------------------------------</span>
-  <h3>GET SET Two way Binding # run Additional code with Two way Binding Unging GET SET Propertirs</h3>
-  <input value="Type Nitin" type='text' [(ngModel)]="Custname">
-  <p>
-    Welcome {{Custname}}
-  </p>
-
-  <span>----------------------------------------------------------------------------------</span>
-  <h3>Access Dom element In the Template from the componant class # Access referance Variable in class @ViewChild</h3>
-  <input #nameRef value="Type Nitin" type='text' [(ngModel)]="Custname">
-  <p>
-    Welcome {{Custname}}
-  </p>
-</fieldset>
-
-<fieldset>
-  <legend><h1>InterComponent Interaction</h1></legend>
-
-  <span>----------------------------------------------------------------------------------</span>
-  <h3>Split Two way Binding # run Additional code with Two way Binding</h3>
+    </p>
 
 
-</fieldset>
+    <p>
+      Split Two way Binding with Additonal Code {{UsernameL}} #
+      <input value="Two way binding" type='text' [ngModel]="UsernameL" (ngModelChange)="GreetNitin($event)">
+
+    </p>
+    <p>
+      Name : <input [value]='Username' (input)='Username = $event.target.value'>
+      <br>
+      You entered : {{Username}}
+    </p>
+
+    <span>----------------------------------------------------------------------------------</span>
+    <h3>GET SET Two way Binding # run Additional code with Two way Binding Unging GET SET Propertirs</h3>
+    <input value="Type Nitin" type='text' [(ngModel)]="Custname">
+    <p>
+      Welcome {{Custname}}
+    </p>
+
+    <span>----------------------------------------------------------------------------------</span>
+    <h3>Access Dom element In the Template from the componant class # Access referance Variable in class @ViewChild</h3>
+    <input #nameRef value="Type Nitin" type='text' [(ngModel)]="Custname">
+    <p>
+      Welcome {{Custname}}
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>
+      <h1>InterComponent Interaction</h1>
+    </legend>
+
+    <span>----------------------------------------------------------------------------------</span>
+    <h3>Split Two way Binding # run Additional code with Two way Binding</h3>
+
+
+  </fieldset>
 </div>

@@ -94,6 +94,12 @@ export class AppComponent implements AfterViewInit {
 @ViewChild(ChildSecondComponent)
  ChildSecondComponentRefVarable: ChildSecondComponent;
 
+  GreetMaster() {
+    alert('Hello Master');
+  }
 
+  GreetMasterName(name: string) {
+    alert('Hello Master ' + name);
+  }
 }
 
