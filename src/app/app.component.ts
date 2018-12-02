@@ -2,13 +2,15 @@
 
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ChildSecondComponent } from './child-second/child-second.component';
-
+import {SubjectInterationService} from './subject-interation.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
+
+  constructor(private _SubjectInterationService: SubjectInterationService) { }
   myNameProperty = 'My First Property Binding';
   title = 'app';
   Apptitle: String = 'App Title';
@@ -77,7 +79,7 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.nameElementRef.nativeElement.focus();
     console.log(this.nameElementRef);
-    this.ChildSecondComponentRefVarable.MessageSecondChild="Message From parent Component";
+   // this.ChildSecondComponentRefVarable.MessageSecondChild="Message From parent Component";
   }
 
   /********************Send Data To Child Component**************************/
@@ -101,5 +103,16 @@ export class AppComponent implements AfterViewInit {
   GreetMasterName(name: string) {
     alert('Hello Master ' + name);
   }
+
+    /***********************************Subject Servece***********************************************/
+  greetStudent() { 
+  //this._SubjectInterationService.sendMessage(Message);
+  this._SubjectInterationService.sendMessage('Good morning');
+  }
+
+  appreciateStudent() { 
+    //this._SubjectInterationService.sendMessage(Message);
+    this._SubjectInterationService.sendMessage('well done');
+    }
 }
 
