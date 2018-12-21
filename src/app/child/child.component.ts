@@ -10,7 +10,7 @@ import { Alert } from 'selenium-webdriver';
 export class ChildComponent implements OnChanges {
   constructor() { }
   ngOnChanges(changes: SimpleChanges) {
-    const MyLoginvalue = changes["LoggedInChild"];
+    const MyLoginvalue = changes["LoggedInChild"];  // LoggedInChild come from parent comp (App comonant / app template)
     console.log(changes);
     // console.log(MyLoginValue);
     if (MyLoginvalue.currentValue === true) {
